@@ -95,7 +95,7 @@ app_restart(){
     VALIDATOR $? "restarting $app_name"
 }
 TIME(){
-    END_TIMR=$(date +%s)
+    END_TIME=$(date +%s)
     TOTAL_TIME=$(( $END_TIME - $START_TIME ))
     echo -e "$Y Total Run Time $N :$Y $TOTAL_TIME seconds $N" 
 }
