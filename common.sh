@@ -60,6 +60,14 @@ MAVEN_SETUP(){
     mv target/shipping-1.0.jar shipping.jar &>> "$LOGFILE"
     VALIDATOR $? "moved shipping jar to /app"
 }
+PYTHON_SETUP(){
+    dnf install python3 gcc python3-devel -y &>> "$LOGFILE"
+    VALIDATOR $? "installing Python"
+    pip3 install -r requirements.txt &>> "$LOGFILE"
+    VALIDATOR $? "installing dependancies"
+    cp $SCRIPT_DIR/payment.service /etc/systemd/system/payment.service
+    VALIDATOR $? "creating .service file"
+}
 APP_SETUP(){
     id roboshop &>> "$LOGFILE"
     if [ $? -ne 0 ]; then
