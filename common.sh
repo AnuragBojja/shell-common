@@ -52,6 +52,7 @@ NODEJS_SETUP(){
     npm install &>> "$LOGFILE"
     VALIDATOR $? "installed all the dependancies"
 }
+
 APP_SETUP(){
     id roboshop &>> "$LOGFILE"
     if [ $? -ne 0 ]; then
