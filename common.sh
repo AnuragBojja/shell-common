@@ -105,6 +105,18 @@ systemd_setup(){
     systemctl start $app_name
     VALIDATOR $? "starting $app_name"
 }
+NGINX_SETUP(){
+    dnf module disable nginx -y
+    VALIDATOR $? "disabling default nginx"
+    dnf module enable nginx:1.24 -y
+    VALIDATOR $? " enabling nginx 1.24"
+    dnf install nginx -y
+    VALIDATOR $? "installing nginx"
+    systemctl enable nginx 
+    systemctl start nginx 
+    VALIDATOR $? "started nginx"
+
+}
 app_restart(){
     systemctl restart $app_name
     VALIDATOR $? "restarting $app_name"
