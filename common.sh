@@ -9,7 +9,7 @@ LOGFOLDER="/var/log/shell-logs"
 mkdir -p "$LOGFOLDER"
 LOGFILENAME=$( echo $0 | cut -d "." -f1)
 LOGFILE="$LOGFOLDER/$LOGFILENAME.log"
-START_TIMR=$(date -%s)
+START_TIMR=$(date +%s)
 echo "Log File Created at $LOGFILE"
 
 CHECK_ROOT(){
@@ -38,7 +38,7 @@ VALIDATOR(){
 }
 
 TIME(){
-    END_TIMR=$(date -%s)
+    END_TIMR=$(date +%s)
     TOTAL_TIME=$(($END_TIME-$START_TIME))
     echo "Total Run Time :$Y $TOTAL_TIME seconds $N" 
 }
