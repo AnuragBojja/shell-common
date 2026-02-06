@@ -52,7 +52,13 @@ NODEJS_SETUP(){
     npm install &>> "$LOGFILE"
     VALIDATOR $? "installed all the dependancies"
 }
-
+MAVEN_SETUP(){
+    dnf install maven -y &>> "$LOGFILE"
+    mvn clean package &>> "$LOGFILE"
+    VALIDATOR $? "installing dependancies"
+    mv target/shipping-1.0.jar shipping.jar &>> "$LOGFILE"
+    VALIDATOR $? "moved shipping jar to /app"
+}
 APP_SETUP(){
     id roboshop &>> "$LOGFILE"
     if [ $? -ne 0 ]; then
