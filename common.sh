@@ -96,6 +96,6 @@ app_restart(){
 }
 TIME(){
     END_TIMR=$(date +%s)
-    TOTAL_TIME=$(($END_TIME - $START_TIME))
+    TOTAL_TIME=$(( $END_TIME - $START_TIME ))
     echo -e "$Y Total Run Time $N :$Y $TOTAL_TIME seconds $N" 
 }
