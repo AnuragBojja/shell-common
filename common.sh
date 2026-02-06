@@ -12,6 +12,7 @@ LOGFILE="$LOGFOLDER/$LOGFILENAME.log"
 START_TIME=$(date +%s)
 SCRIPT_DIR=$PWD
 MongoDB_IP="mongodb.anuragaws.shop"
+MYSQL_HOST="mysql.anuragaws.shop"
 echo "Log File Created at $LOGFILE"
 
 CHECK_ROOT(){
