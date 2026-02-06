@@ -9,7 +9,7 @@ LOGFOLDER="/var/log/shell-logs"
 mkdir -p "$LOGFOLDER"
 LOGFILENAME=$( echo $0 | cut -d "." -f1)
 LOGFILE="$LOGFOLDER/$LOGFILENAME.log"
-START_TIMR=$(date +%s)
+START_TIME=$(date +%s)
 SCRIPT_DIR=$PWD
 MongoDB_IP="mongodb.anuragaws.shop"
 echo "Log File Created at $LOGFILE"
