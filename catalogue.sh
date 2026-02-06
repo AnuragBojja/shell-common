@@ -4,8 +4,9 @@ source ./common.sh
 app_name="catalogue"
 CHECK_ROOT
 APP_SETUP
-ROBOSHOP
 NODEJS_SETUP
+systemd_setup
+
 
 cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 VALIDATOR $? "Adding mongo repo"
@@ -20,7 +21,6 @@ if [ $? -ne 0 ]; then
 else
     echo -e "Database Alredy exist......$Y SKIPPING $N"
 fi 
-
 
 app_restart
 TIME

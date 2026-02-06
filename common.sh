@@ -38,15 +38,7 @@ VALIDATOR(){
     echo " ................................... " &>> "$LOGFILE"
     echo -e "$G ................................... $N"
 }
-ROBOSHOP(){
-    id roboshop &>> "$LOGFILE"
-    if [ $? -ne 0 ]; then
-        useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
-        VALIDATOR $? "Creating system user roboshop"
-    else 
-        echo -e "user roboshop already exiest ......$Y SKIPPING $N"
-    fi
-}
+
 NODEJS_SETUP(){
     dnf module disable nodejs -y &>> "$LOGFILE"
     VALIDATOR $? "Disable nodejs modules"
@@ -61,6 +53,13 @@ NODEJS_SETUP(){
     VALIDATOR $? "installed all the dependancies"
 }
 APP_SETUP(){
+    id roboshop &>> "$LOGFILE"
+    if [ $? -ne 0 ]; then
+        useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop
+        VALIDATOR $? "Creating system user roboshop"
+    else 
+        echo -e "user roboshop already exiest ......$Y SKIPPING $N"
+    fi
     mkdir -p /app 
     VALIDATOR $? "created /app dir"
 
